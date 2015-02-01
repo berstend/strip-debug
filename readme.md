@@ -1,6 +1,6 @@
-# strip-debug [![Build Status](https://travis-ci.org/sindresorhus/strip-debug.svg?branch=master)](https://travis-ci.org/sindresorhus/strip-debug)
+# strip-debug-arbitrary
 
-> Strip `console`, `alert`, and `debugger` statements from JavaScript code
+> Strip `console`, `alert`, and `debugger` statements from JavaScript code with whitelist
 
 Useful for making sure you didn't leave any logging in production code.
 
@@ -10,11 +10,12 @@ Also available as [gulp](https://github.com/sindresorhus/gulp-strip-debug)/[grun
 ## Usage
 
 ```sh
-$ npm install --save strip-debug
+$ npm install --save berstend/strip-debug-arbitrary
+
 ```
 
 ```js
-var stripDebug = require('strip-debug');
+var stripDebug = require('strip-debug-arbitrary');
 
 stripDebug('function foo(){console.log("foo");alert("foo");debugger;}').toString();
 //=> function foo(){void 0;void 0;}
@@ -23,7 +24,7 @@ stripDebug('function foo(){console.log("foo");alert("foo");debugger;}').toString
 
 ### API
 
-## stripDebug(input)
+## stripDebug(input, id, whitelist)
 
 Returns the modified [Esprima AST](http://esprima.org) which can be used to make additional modifications.
 
@@ -38,24 +39,21 @@ Type: `string`, `object`
 Pass in a string of JavaScript code or a [Esprima compatible AST](http://esprima.org).
 
 
-## CLI
+### id
 
-```sh
-$ npm install --global strip-debug
-```
+Type: `string`
 
-```sh
-$ strip-debug src/app.js > dist/app.js
-```
+Optional: Pass the name of the statement to remove (e.g. "log"), if none is given "console" is being used.
 
-or pipe something to it:
 
-```sh
-$ echo 'function foo(){console.log("bar")}' | strip-debug
-#=> function foo(){}
-```
+### whitelist
+
+Type: `array`
+
+Optional: Pass an array of properties to exclude (e.g. ["warn", "error"])
+
 
 
 ## License
 
-MIT © [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Sindre Sorhus](http://sindresorhus.com) & berstend

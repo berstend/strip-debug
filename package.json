@@ -1,16 +1,14 @@
 {
-  "name": "strip-debug",
+  "name": "strip-debug-arbitrary",
   "version": "1.0.1",
-  "description": "Strip console, alert, and debugger statements from JavaScript code",
+  "description": "Strip console, alert, and debugger statements from JavaScript code with whitelist",
   "license": "MIT",
   "bin": {
     "strip-debug": "cli.js"
   },
-  "repository": "sindresorhus/strip-debug",
+  "repository": "berstend/strip-debug-arbitrary",
   "author": {
-    "name": "Sindre Sorhus",
-    "email": "sindresorhus@gmail.com",
-    "url": "http://sindresorhus.com"
+    "name": "berstend"
   },
   "engines": {
     "node": ">=0.10.0"
@@ -41,8 +39,8 @@
   "dependencies": {
     "rocambole": "^0.3.6",
     "rocambole-strip-alert": "^0.1.1",
-    "rocambole-strip-console": "^1.0.0",
-    "rocambole-strip-debugger": "^1.0.0"
+    "rocambole-strip-debugger": "^1.0.0",
+    "rocambole-strip-arbitrary": "git://github.com/berstend/rocambole-strip-arbitrary"
   },
   "devDependencies": {
     "mocha": "*"
